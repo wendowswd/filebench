@@ -173,7 +173,7 @@ fb_lfs_freemem(fb_fdesc_t *fd, off64_t size)
 	off64_t left;
 	int ret = 0;
 
-	for (left = size; left > 0; left -= MMAP_SIZE) {
+	/* for (left = size; left > 0; left -= MMAP_SIZE) {
 		off64_t thismapsize;
 		caddr_t addr;
 
@@ -182,7 +182,7 @@ fb_lfs_freemem(fb_fdesc_t *fd, off64_t size)
 		    MAP_SHARED, fd->fd_num, size - left);
 		ret += msync(addr, thismapsize, MS_INVALIDATE);
 		(void) munmap(addr, thismapsize);
-	}
+	} */
 	return (ret);
 }
 

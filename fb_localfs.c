@@ -42,6 +42,8 @@
 #include <sys/resource.h>
 #include <strings.h>
 
+#include <unvmfs.h>
+
 #include "filebench.h"
 #include "fsplug.h"
 

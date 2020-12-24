@@ -44,7 +44,16 @@ workloads_DATA = compflow_demo.f \
 	varmail.f \
 	videoserver.f \
 	webproxy.f \
-	webserver.f
+	webserver.f \
+	a_filemicro_append.f \
+	a_filemicro_rread.f \
+	a_filemicro_rwrite.f \
+	a_filemicro_seqread.f \
+	a_filemicro_seqwrite.f \
+	a_fileserver.f \
+	a_varmail.f \
+	a_webproxy.f \
+	a_webserver.f
 
 
 EXTRA_DIST = $(workloads_DATA)

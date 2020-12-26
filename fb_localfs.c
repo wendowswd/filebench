@@ -192,7 +192,7 @@ fb_lfs_freemem(fb_fdesc_t *fd, off64_t size)
 static int
 fb_lfs_pread(fb_fdesc_t *fd, caddr_t iobuf, fbint_t iosize, off64_t fileoffset)
 {
-	return (pread64(fd->fd_num, iobuf, iosize, fileoffset));
+	return (pread(fd->fd_num, iobuf, iosize, fileoffset));
 }
 
 /*
@@ -489,7 +489,7 @@ fb_lfsflow_aiowait(threadflow_t *threadflow, flowop_t *flowop)
 static int
 fb_lfs_open(fb_fdesc_t *fd, char *path, int flags, int perms)
 {
-	if ((fd->fd_num = open64(path, flags, perms)) < 0)
+	if ((fd->fd_num = open(path, flags, perms)) < 0)
 		return (FILEBENCH_ERROR);
 	else
 		return (FILEBENCH_OK);
@@ -528,7 +528,7 @@ fb_lfs_fsync(fb_fdesc_t *fd)
 static int
 fb_lfs_lseek(fb_fdesc_t *fd, off64_t offset, int whence)
 {
-	return (lseek64(fd->fd_num, offset, whence));
+	return (lseek(fd->fd_num, offset, whence));
 }
 
 /*
@@ -622,7 +622,7 @@ fb_lfs_closedir(DIR *dirp)
 static int
 fb_lfs_fstat(fb_fdesc_t *fd, struct stat64 *statbufp)
 {
-	return (fstat64(fd->fd_num, statbufp));
+	return (fstat(fd->fd_num, statbufp));
 }
 
 /*
@@ -631,7 +631,7 @@ fb_lfs_fstat(fb_fdesc_t *fd, struct stat64 *statbufp)
 static int
 fb_lfs_stat(char *path, struct stat64 *statbufp)
 {
-	return (stat64(path, statbufp));
+	return (stat(path, statbufp));
 }
 
 /*
@@ -640,7 +640,7 @@ fb_lfs_stat(char *path, struct stat64 *statbufp)
 static int
 fb_lfs_pwrite(fb_fdesc_t *fd, caddr_t iobuf, fbint_t iosize, off64_t offset)
 {
-	return (pwrite64(fd->fd_num, iobuf, iosize, offset));
+	return (pwrite(fd->fd_num, iobuf, iosize, offset));
 }
 
 /*

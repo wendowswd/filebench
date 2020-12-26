@@ -35,7 +35,7 @@ set $iosize=4k
 set $iters=1
 set $nthreads=1
 
-define file name=bigfile1,path=$dir,size=$filesize,prealloc,reuse,cached=$cached
+define file name=bigfile1,path=$dir,size=$filesize,prealloc,cached=$cached
 
 define process name=filereader,instances=1
 {

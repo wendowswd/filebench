@@ -36,7 +36,7 @@ set $iters=1
 set $nthreads=1
 set $sync=false
 
-define file name=bigfile1,path=$dir,size=$filesize,prealloc,reuse,cached=$cached
+define file name=bigfile1,path=$dir,size=$filesize,prealloc,cached=$cached
 
 define process name=filewriter,instances=1
 {

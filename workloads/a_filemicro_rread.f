@@ -46,6 +46,8 @@ define process name=filereader,instances=1
   }
 }
 
+run 60
+
 echo  "FileMicro-ReadRand Version 2.2 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"
 usage "       set \$bytes=<value>     defaults to $bytes"

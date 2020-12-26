@@ -47,6 +47,8 @@ define process name=filereader,instances=1
   }
 }
 
+run 60
+
 echo  "FileMicro-SeqRead Version 2.1 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"
 usage "       set \$cached=<bool>    defaults to $cached"

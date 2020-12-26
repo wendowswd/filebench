@@ -47,6 +47,8 @@ define process name=filewriter,instances=1
   }
 }
 
+run 60
+
 echo  "FileMicro-SeqWrite Version 2.2 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"
 usage "       set \$cached=<bool>    defaults to $cached"

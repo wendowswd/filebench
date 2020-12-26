@@ -47,6 +47,8 @@ define process name=filewriter,instances=1
   }
 }
 
+run 60
+
 echo  "FileMicro-WriteRand Version 2.1 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"
 usage "       set \$bytes=<value>    defaults to $bytes"

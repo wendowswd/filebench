@@ -32,8 +32,8 @@ set $witers=1
 set $riosize=1m
 set $wiosize=8k
 
-define randvar name=$dirwidth,type=gamma,min=128,max=2056,round=1,mean=512
-define randvar name=$filesize,type=gamma,min=4k,max=16m,round=4k,mean=64k
+define randvar name=$dirwidth,type=gamma,min=128,round=1,mean=512
+define randvar name=$filesize,type=gamma,min=4k,round=4k,mean=64k
 
 define fileset name=bigfileset,path=$dir,size=$filesize,entries=$nfiles,dirwidth=$dirwidth,prealloc
 

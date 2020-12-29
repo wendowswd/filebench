@@ -29,17 +29,17 @@ set $nthreads=50
 set $sync=false
 set $riters=1
 set $witers=1
-set $riosize=1m
+set $riosize=64k
 set $wiosize=16k
 
 define randvar name=$dirwidth,type=gamma,min=128,round=1,mean=512
-define randvar name=$filesize,type=gamma,min=4k,round=4k,mean=32k
+define randvar name=$filesize,type=gamma,min=64k,round=64k,mean=256k
 
 define fileset name=bigfileset,path=$dir,size=$filesize,entries=$nfiles,dirwidth=$dirwidth,prealloc
 
-define process name=filereader,instances=1
+define process name=varmail,instances=1
 {
-  thread name=filereaderthread,memsize=10m,instances=$nthreads
+  thread name=varmailthread,memsize=10m,instances=$nthreads
   {
     flowop read name=read-file,filesetname=bigfileset,random,iosize=$riosize,iters=$riters
     flowop write name=write-file,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers

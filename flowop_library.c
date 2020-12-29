@@ -49,6 +49,8 @@
 #include "utils.h"
 #include "fsplug.h"
 
+//extern void init_unvmfs(void);
+
 /*
  * These routines implement the flowops from the f language. Each
  * flowop has has a name such as "read", and a set of function pointers
@@ -544,6 +546,8 @@ flowoplib_read(threadflow_t *threadflow, flowop_t *flowop)
 	uint32_t pos_idx;
 	struct posset *ps;
 	int ret;
+
+    //init_unvmfs();
 
 	iosize = avd_get_int(flowop->fo_iosize);
 
@@ -2308,6 +2312,8 @@ flowoplib_write(threadflow_t *threadflow, flowop_t *flowop)
 	struct posset *ps;
 	int ret;
 
+    //init_unvmfs();
+
 	iosize = avd_get_int(flowop->fo_iosize);
 	if ((ret = flowoplib_iosetup(threadflow, flowop, &wss, &iobuf,
 	    &fdesc, iosize)) != FILEBENCH_OK)
@@ -2461,6 +2467,8 @@ flowoplib_appendfile(threadflow_t *threadflow, flowop_t *flowop)
 	fbint_t wss;
 	fbint_t iosize;
 	int ret;
+
+    //init_unvmfs();
 
 	iosize = avd_get_int(flowop->fo_iosize);
 	if ((ret = flowoplib_iosetup(threadflow, flowop, &wss, &iobuf,

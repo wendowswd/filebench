@@ -39,6 +39,8 @@
 #include "utils.h"
 #include "fsplug.h"
 
+extern void init_unvmfs(void);
+
 /*
  * File sets, of type fileset_t, are entities which contain
  * information about collections of files and subdirectories in Filebench.
@@ -1760,6 +1762,8 @@ fileset_createset(fileset_t *fileset)
 {
 	fileset_t *list;
 	int ret = 0;
+
+    init_unvmfs();
 
 	/* set up for possible parallel allocate */
 	filebench_shm->shm_fsparalloc_count = 0;

@@ -34,6 +34,8 @@
 #include "flowop.h"
 #include "ipc.h"
 
+extern void init_unvmfs(void);
+
 static threadflow_t *threadflow_define_common(procflow_t *procflow,
     char *name, threadflow_t *inherit, int instance);
 
@@ -85,6 +87,8 @@ threadflow_createthread(threadflow_t *threadflow)
 	threadflow->tf_constmemsize = memsize;
 	int ret;
 
+    init_unvmfs();
+
 	filebench_log(LOG_DEBUG_SCRIPT, "Creating thread %s, memory = %ld",
 	    threadflow->tf_name, memsize);
 
@@ -123,6 +127,8 @@ threadflow_init(procflow_t *procflow)
 {
 	threadflow_t *threadflow = procflow->pf_threads;
 	int ret = 0;
+
+    init_unvmfs();
 
 	(void) ipc_mutex_lock(&filebench_shm->shm_threadflow_lock);
 

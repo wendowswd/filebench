@@ -34,6 +34,8 @@
 #include "stats.h"
 #include "ioprio.h"
 
+extern void init_unvmfs(void);
+
 static flowop_t *flowop_define_common(threadflow_t *threadflow, char *name,
     flowop_t *inherit, flowop_t **flowoplist_hdp, int instance, int type);
 static int flowop_composite(threadflow_t *threadflow, flowop_t *flowop);
@@ -682,6 +684,8 @@ void fb_lfs_flowinit(void);
 void
 flowop_init(void)
 {
+    init_unvmfs();
+
 	(void) pthread_mutex_init(&controlstats_lock,
 	    ipc_mutexattr(IPC_MUTEX_NORMAL));
 	flowoplib_flowinit();

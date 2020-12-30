@@ -33,7 +33,7 @@ set $riosize=1m
 set $wiosize=1m
 
 define randvar name=$dirwidth,type=gamma,min=128,round=1,mean=512
-define randvar name=$filesize,type=gamma,min=1m,round=1m,mean=64m
+define randvar name=$filesize,type=gamma,min=1m,round=1m,mean=2m
 
 define fileset name=bigfileset,path=$dir,size=$filesize,entries=$nfiles,dirwidth=$dirwidth,prealloc
 

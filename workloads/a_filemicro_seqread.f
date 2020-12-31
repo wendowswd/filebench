@@ -30,7 +30,7 @@
 set $dir=/mnt/pmem0_wenduo/tmp
 set $bytes=128m
 set $cached=false
-set $filesize=0
+set $filesize=1g
 set $iosize=4k
 set $iters=1
 set $nthreads=1

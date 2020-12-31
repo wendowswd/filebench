@@ -49,7 +49,7 @@
 #include "utils.h"
 #include "fsplug.h"
 
-//extern void init_unvmfs(void);
+//extern void init_libnvmmio(void);
 
 /*
  * These routines implement the flowops from the f language. Each
@@ -547,7 +547,7 @@ flowoplib_read(threadflow_t *threadflow, flowop_t *flowop)
 	struct posset *ps;
 	int ret;
 
-    //init_unvmfs();
+    //init_libnvmmio();
 
 	iosize = avd_get_int(flowop->fo_iosize);
 
@@ -2312,7 +2312,7 @@ flowoplib_write(threadflow_t *threadflow, flowop_t *flowop)
 	struct posset *ps;
 	int ret;
 
-    //init_unvmfs();
+    //init_libnvmmio();
 
 	iosize = avd_get_int(flowop->fo_iosize);
 	if ((ret = flowoplib_iosetup(threadflow, flowop, &wss, &iobuf,
@@ -2468,7 +2468,7 @@ flowoplib_appendfile(threadflow_t *threadflow, flowop_t *flowop)
 	fbint_t iosize;
 	int ret;
 
-    //init_unvmfs();
+    //init_libnvmmio();
 
 	iosize = avd_get_int(flowop->fo_iosize);
 	if ((ret = flowoplib_iosetup(threadflow, flowop, &wss, &iobuf,

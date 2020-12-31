@@ -27,7 +27,7 @@
 # Single threaded asynchronous ($sync) random writes (4KB I/Os) on a 1GB file.
 # Stops when 128MB ($bytes) has been written.
 
-set $dir=/home/wenduo/unvmfs/tmp
+set $dir=/mnt/pmem0_wenduo/tmp
 set $bytes=128m
 set $cached=false
 set $filesize=1g

@@ -27,7 +27,7 @@
 # Single threaded asynchronous ($sync) sequential reads (4KB I/Os) on a file.
 # Stops when 128MB ($bytes) has been read.
 
-set $dir=/home/wenduo/unvmfs/tmp
+set $dir=/mnt/pmem0_wenduo/tmp
 set $bytes=128m
 set $cached=false
 set $filesize=0

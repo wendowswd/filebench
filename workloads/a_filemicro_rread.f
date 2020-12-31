@@ -27,7 +27,7 @@
 # Single threaded random reads (4KB I/Os) on a 1GB file.
 # Stops after 128MB ($bytes) has been read.
 
-set $dir=/home/wenduo/unvmfs/tmp
+set $dir=/mnt/pmem0_wenduo/tmp
 set $bytes=128m
 set $cached=false
 set $filesize=1g

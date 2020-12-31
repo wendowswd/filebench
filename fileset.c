@@ -39,7 +39,7 @@
 #include "utils.h"
 #include "fsplug.h"
 
-extern void init_unvmfs(void);
+extern void init_libnvmmio(void);
 
 /*
  * File sets, of type fileset_t, are entities which contain
@@ -1763,7 +1763,7 @@ fileset_createset(fileset_t *fileset)
 	fileset_t *list;
 	int ret = 0;
 
-    init_unvmfs();
+    init_libnvmmio();
 
 	/* set up for possible parallel allocate */
 	filebench_shm->shm_fsparalloc_count = 0;

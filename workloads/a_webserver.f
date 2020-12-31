@@ -23,7 +23,7 @@
 # Use is subject to license terms.
 #
 
-set $dir=/home/wenduo/unvmfs/tmp
+set $dir=/mnt/pmem0_wenduo/tmp
 set $nfiles=10000
 set $nthreads=50
 set $sync=false

@@ -489,7 +489,7 @@ fb_lfsflow_aiowait(threadflow_t *threadflow, flowop_t *flowop)
 static int
 fb_lfs_open(fb_fdesc_t *fd, char *path, int flags, int perms)
 {
-	if ((fd->fd_num = open(path, flags, perms)) < 0)
+	if ((fd->fd_num = open(path, flags | O_ATOMIC, perms)) < 0)
 		return (FILEBENCH_ERROR);
 	else
 		return (FILEBENCH_OK);

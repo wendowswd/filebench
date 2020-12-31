@@ -26,5 +26,5 @@ endif
 
 DEFS = -D_REENTRANT -DYYDEBUG -DYY_NO_INPUT -DFILEBENCHDIR=\"$(datadir)/filebench\" -D_LARGEFILE64_SOURCE -D_GNU_SOURCE
 
-AM_CPPFLAGS = -I../unvmfs/include/
-filebench_LDADD = ../unvmfs/src/libunvmfs.a
+AM_CPPFLAGS = -I../libnvmmio/include/
+filebench_LDADD = ../libnvmmio/src/libnvmmio.a

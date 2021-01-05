@@ -44,23 +44,26 @@ define process name=webserver,instances=1
   thread name=webserverthread,memsize=10m,instances=$nthreads
   {
     flowop openfile name=openfile1,filesetname=bigfileset,fd=1
-    flowop write name=writefile1,filesetname=bigfileset,fd=1,random,iosize=$wiosize
+    flowop read name=readfile1,filesetname=bigfileset,fd=1,random,iosize=$riosize,iters=$riters
+    flowop write name=writefile1,filesetname=bigfileset,fd=1,random,dsync=$sync,iosize=$wiosize,iters=$witers
     flowop fsync name=fsyncfile1,filesetname=bigfileset,fd=1
     flowop closefile name=closefile1,filesetname=bigfileset,fd=1
   
     flowop read name=read-file,filesetname=bigfileset,random,iosize=$riosize,iters=$riters
 
-    flowop openfile name=openfile2,filesetname=bigfileset,fd=1
-    flowop write name=writefile2,filesetname=bigfileset,fd=1,random,iosize=$wiosize
-    flowop fsync name=fsyncfile2,filesetname=bigfileset,fd=1
-    flowop closefile name=closefile2,filesetname=bigfileset,fd=1
+    flowop openfile name=openfile2,filesetname=bigfileset,fd=2
+    flowop read name=readfile2,filesetname=bigfileset,fd=2,random,iosize=$riosize,iters=$riters
+    flowop write name=writefile2,filesetname=bigfileset,fd=2,random,dsync=$sync,iosize=$wiosize,iters=$witers
+    flowop fsync name=fsyncfile2,filesetname=bigfileset,fd=2
+    flowop closefile name=closefile2,filesetname=bigfileset,fd=2
     
     flowop write name=write-file,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers
 
-    flowop openfile name=openfile3,filesetname=bigfileset,fd=1
-    flowop write name=writefile3,filesetname=bigfileset,fd=1,random,iosize=$wiosize
-    flowop fsync name=fsyncfile3,filesetname=bigfileset,fd=1
-    flowop closefile name=closefile3,filesetname=bigfileset,fd=1
+    flowop openfile name=openfile3,filesetname=bigfileset,fd=3
+    flowop read name=readfile3,filesetname=bigfileset,fd=3,random,iosize=$riosize,iters=$riters
+    flowop write name=writefile3,filesetname=bigfileset,fd=3,random,dsync=$sync,iosize=$wiosize,iters=$witers
+    flowop fsync name=fsyncfile3,filesetname=bigfileset,fd=3
+    flowop closefile name=closefile3,filesetname=bigfileset,fd=3
   }
 }
 

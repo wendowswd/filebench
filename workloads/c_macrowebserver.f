@@ -27,7 +27,7 @@ set $dir=/mnt/pmem0_wenduo/tmp
 set $nfiles=100
 set $nthreads=50
 set $sync=true
-set $riters=10
+set $riters=1
 set $witers=1
 set $riosize=256k
 set $wiosize=16k
@@ -43,7 +43,46 @@ define process name=webserver,instances=1
 {
   thread name=webserverthread,memsize=0m,instances=$nthreads
   {  
-    flowop read name=read-file,filesetname=bigfileset,random,iosize=$riosize,iters=$riters    
+    flowop openfile name=openreadfile1,filesetname=bigfileset,fd=1
+    flowop readwholefile name=readwhole-file1,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=1
+    flowop closefile name=closereadfile1,filesetname=bigfileset,fd=1
+
+    flowop openfile name=openreadfile2,filesetname=bigfileset,fd=2
+    flowop readwholefile name=readwhole-file2,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=2
+    flowop closefile name=closereadfile2,filesetname=bigfileset,fd=2
+
+    flowop openfile name=openreadfile3,filesetname=bigfileset,fd=3
+    flowop readwholefile name=readwhole-file3,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=3
+    flowop closefile name=closereadfile3,filesetname=bigfileset,fd=3
+
+    flowop openfile name=openreadfile4,filesetname=bigfileset,fd=4
+    flowop readwholefile name=readwhole-file4,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=4
+    flowop closefile name=closereadfile4,filesetname=bigfileset,fd=4
+
+    flowop openfile name=openreadfile5,filesetname=bigfileset,fd=5
+    flowop readwholefile name=readwhole-file5,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=5
+    flowop closefile name=closereadfile5,filesetname=bigfileset,fd=5
+
+    flowop openfile name=openreadfile6,filesetname=bigfileset,fd=6
+    flowop readwholefile name=readwhole-file6,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=6
+    flowop closefile name=closereadfile6,filesetname=bigfileset,fd=6
+
+    flowop openfile name=openreadfile7,filesetname=bigfileset,fd=7
+    flowop readwholefile name=readwhole-file7,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=7
+    flowop closefile name=closereadfile7,filesetname=bigfileset,fd=7
+
+    flowop openfile name=openreadfile8,filesetname=bigfileset,fd=8
+    flowop readwholefile name=readwhole-file8,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=8
+    flowop closefile name=closereadfile8,filesetname=bigfileset,fd=8
+
+    flowop openfile name=openreadfile9,filesetname=bigfileset,fd=9
+    flowop readwholefile name=readwhole-file9,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=9
+    flowop closefile name=closereadfile9,filesetname=bigfileset,fd=9
+
+    flowop openfile name=openreadfile10,filesetname=bigfileset,fd=10
+    flowop readwholefile name=readwhole-file10,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=10
+    flowop closefile name=closereadfile10,filesetname=bigfileset,fd=10
+    
     flowop write name=write-file,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers
   }
 }

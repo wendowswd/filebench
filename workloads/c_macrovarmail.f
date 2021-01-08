@@ -43,9 +43,24 @@ define process name=varmail,instances=1
 {
   thread name=varmailthread,memsize=0m,instances=$nthreads
   {    
+    flowop openfile name=openreadfile1,filesetname=bigfileset,fd=1
+    flowop readwholefile name=readwhole-file1,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=1
+    flowop closefile name=closereadfile1,filesetname=bigfileset,fd=1
 
-    flowop read name=read-file,filesetname=bigfileset,random,iosize=$riosize,iters=$riters 
-    flowop write name=write-file,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers
+    flowop openfile name=openwritefile1,filesetname=bigfileset,fd=2
+    flowop write name=write-file1,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers,fd=2
+	flowop fsync name=fsyncwritefile1,filesetname=bigfileset,fd=2
+    flowop closefile name=closewritefile1,filesetname=bigfileset,fd=2
+
+    flowop openfile name=openreadfile2,filesetname=bigfileset,fd=3
+    flowop readwholefile name=readwhole-file2,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=3
+    flowop closefile name=closereadfile2,filesetname=bigfileset,fd=3
+
+    flowop openfile name=openwritefile2,filesetname=bigfileset,fd=4
+    flowop write name=write-file2,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers,fd=4
+	flowop fsync name=fsyncwritefile2,filesetname=bigfileset,fd=4
+    flowop closefile name=closewritefile2,filesetname=bigfileset,fd=4
+    
   }
 }
 

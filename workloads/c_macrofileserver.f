@@ -28,7 +28,7 @@ set $nfiles=100
 set $nthreads=50
 set $sync=true
 set $riters=1
-set $witers=2
+set $witers=1
 set $riosize=1m
 set $wiosize=64k
 set $cached=false
@@ -43,9 +43,23 @@ define process name=fileserver,instances=1
 {
   thread name=fileserverthread,memsize=0m,instances=$nthreads
   {
+    #flowop read name=read-file,filesetname=bigfileset,random,iosize=$riosize,iters=$riters
+    flowop read name=seqread-file,filesetname=bigfileset,iosize=$riosize,iters=$riters
 
-    flowop read name=read-file,filesetname=bigfileset,random,iosize=$riosize,iters=$riters
-    flowop write name=write-file,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers
+    flowop openfile name=openreadfile,filesetname=bigfileset,fd=1
+    flowop readwholefile name=readwhole-file,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=1
+    flowop closefile name=closereadfile,filesetname=bigfileset,fd=1
+    
+    #flowop write name=write-file,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers
+    flowop write name=seqwrite-file1,filesetname=bigfileset,dsync=$sync,iosize=$wiosize,iters=$witers
+    flowop write name=seqwrite-file2,filesetname=bigfileset,dsync=$sync,iosize=$wiosize,iters=$witers
+
+    flowop openfile name=openwritefile,filesetname=bigfileset,fd=2
+    flowop writewholefile name=writewhole-file,filesetname=bigfileset,dsync=$sync,iosize=$wiosize,iters=$witers,fd=2
+	flowop fsync name=fsyncwritefile,filesetname=bigfileset,fd=2
+    flowop closefile name=closewritefile,filesetname=bigfileset,fd=2
+    
+    flowop appendfile name=append-file,filename=bigfileset,dsync=$sync,iosize=$wiosize,iters=$witers
   }
 }
 

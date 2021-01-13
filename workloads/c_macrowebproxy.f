@@ -43,10 +43,10 @@ define process name=webproxy,instances=1
 {
   thread name=webproxythread,memsize=0m,instances=$nthreads
   {
-    flowop read name=read-file,filesetname=bigfileset,random,iosize=$riosize,iters=$riters
+    #flowop read name=read-file,filesetname=bigfileset,random,iosize=$riosize,iters=$riters
     
     flowop read name=seqread-file1,filesetname=bigfileset,iosize=$riosize,iters=$riters
-    flowop read name=seqread-file2,filesetname=bigfileset,iosize=$riosize,iters=$riters
+    #flowop read name=seqread-file2,filesetname=bigfileset,iosize=$riosize,iters=$riters
 
     flowop openfile name=openreadfile1,filesetname=bigfileset,fd=1
     flowop readwholefile name=readwhole-file1,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=1
@@ -55,14 +55,22 @@ define process name=webproxy,instances=1
     flowop openfile name=openreadfile2,filesetname=bigfileset,fd=2
     flowop readwholefile name=readwhole-file2,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=2
     flowop closefile name=closereadfile2,filesetname=bigfileset,fd=2
+
+    flowop openfile name=openreadfile3,filesetname=bigfileset,fd=3
+    flowop readwholefile name=readwhole-file3,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=3
+    flowop closefile name=closereadfile3,filesetname=bigfileset,fd=3
+
+    flowop openfile name=openreadfile4,filesetname=bigfileset,fd=4
+    flowop readwholefile name=readwhole-file4,filesetname=bigfileset,iosize=$riosize,iters=$riters,fd=4
+    flowop closefile name=closereadfile4,filesetname=bigfileset,fd=4
     
     #flowop write name=write-file,filesetname=bigfileset,random,dsync=$sync,iosize=$wiosize,iters=$witers
     #flowop write name=seqwrite-file,filesetname=bigfileset,dsync=$sync,iosize=$wiosize,iters=$witers
 
-    flowop openfile name=openwritefile,filesetname=bigfileset,fd=3
-    flowop writewholefile name=writewhole-file,filesetname=bigfileset,dsync=$sync,iosize=$wiosize,iters=$witers,fd=3
-	flowop fsync name=fsyncwritefile,filesetname=bigfileset,fd=3
-    flowop closefile name=closewritefile,filesetname=bigfileset,fd=3
+    flowop openfile name=openwritefile,filesetname=bigfileset,fd=5
+    flowop writewholefile name=writewhole-file,filesetname=bigfileset,dsync=$sync,iosize=$wiosize,iters=$witers,fd=5
+	flowop fsync name=fsyncwritefile,filesetname=bigfileset,fd=5
+    flowop closefile name=closewritefile,filesetname=bigfileset,fd=5
     
     #flowop appendfile name=append-file,filename=bigfileset,dsync=$sync,iosize=$wiosize,iters=$witers
   }

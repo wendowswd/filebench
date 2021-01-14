@@ -29,12 +29,12 @@ set $nthreads=50
 set $sync=true
 set $riters=1
 set $witers=1
-set $riosize=8k
-set $wiosize=16k
+set $riosize=32k
+set $wiosize=32k
 set $cached=false
 
 define randvar name=$dirwidth,type=gamma,min=1,round=1,mean=512
-define randvar name=$filesize,type=gamma,min=16k,round=16k,mean=32k
+define randvar name=$filesize,type=gamma,min=32k,round=32k,mean=32k
 
 #define file name=bigfile1,path=$dir,size=$filesize,prealloc,cached=$cached
 define fileset name=bigfileset,path=$dir,size=$filesize,entries=$nfiles,dirwidth=$dirwidth,prealloc

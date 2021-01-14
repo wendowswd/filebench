@@ -45,7 +45,7 @@ define process name=filewriter,instances=1
 {
   thread name=filewriterthread,memsize=0m,instances=$nthreads
   {
-    flowop appendfile name=write-file,dsync=$sync,filename=bigfileset,iosize=$iosize,iters=$iters
+    flowop write name=write-file,dsync=$sync,filename=bigfileset,iosize=$iosize,iters=$iters
     flowop finishonbytes name=finish,value=$bytes
   }
 }
